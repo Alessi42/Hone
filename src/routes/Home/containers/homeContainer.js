@@ -13,7 +13,7 @@ import Counter from '../../../components/Counter/counter'
 import Score from '../../../components/Main/score'
 import Category from '../../../components/Main/category'
 
-const {width,height} = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 class Home extends Component {
   constructor() {
@@ -24,33 +24,33 @@ class Home extends Component {
       categories: [
         {
           key: 1,
-          title: 'Cardio',
+          title: 'CARDIO',
           completed: 0.2,
           component: 'Cardio'
-        },
-        {
+        }, {
           key: 2,
-          title: 'Arms',
+          title: 'ARMS',
           completed: 0.6,
           component: 'Arms'
-        },
-        {
+        }, {
           key: 3,
-          title: 'Abs',
+          title: 'ABS',
           completed: 0.4,
           component: 'Abs'
-        },
-        {
+        }, {
           key: 4,
-          title: 'Legs',
+          title: 'LEGS',
           completed: 0.7,
           component: 'Legs'
-        },
+        }
       ]
     }
   }
   onPress(category) {
-    Actions.workouts({text: category.title});
+    if (typeof category !== "undefined") {
+      Actions.workouts({text: category.title});
+    }
+    Actions.counter();
     // console.log("pressed");
     // switch (screen) {
     //   case 'workouts':
@@ -63,48 +63,56 @@ class Home extends Component {
   }
   incrementXP(value) {
     this.setState(previousState => {
-        return { completed: previousState.completed + value };
-      });
+      return {
+        completed: previousState.completed + value
+      };
+    });
   }
   incrementLevel(value) {
     this.setState(previousState => {
-        return { level: previousState.level + value };
-      });
+      return {
+        level: previousState.level + value
+      };
+    });
   }
   // <Image source={require('../assets/background.png')} style={styles.backgroundImage}>
   // contentContainerStyle={styles.container}
   render() {
     const createCategories = () => {
       return this.state.categories.map((category) => {
-        return <Category key={category.key} category={category} onPress={() => this.onPress(category)} />
+        return <Category key={category.key} category={category} onPress={() => this.onPress(category)}/>
       });
     }
     return (
-      <ScrollView style={{flex: 1}} bounces={false} showsVerticalScrollIndicator={false}>
-      <View style={{flex: 1}}>
-        <Image source={require('../assets/background.png')} style={styles.backgroundImage}>
+      <ScrollView style={{
+        flex: 1
+      }} bounces={false} showsVerticalScrollIndicator={false}>
+        <View style={{
+          flex: 1
+        }}>
+          <Image source={require('../assets/background.png')} style={styles.backgroundImage}>
             <Score completed={this.state.completed} level={this.state.level}/>
-        </Image>
-        <View style={styles.container}>
-          {createCategories()}
-          <TouchableOpacity onPress={() => this.incrementXP(1)} style={styles.button}>
-            <Text style={styles.buttonText}>
-              Increment Completed
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.incrementLevel(1)} style={styles.button}>
-            <Text style={styles.buttonText}>
-              Increment Level
-            </Text>
-          </TouchableOpacity>
-           <TouchableOpacity onPress={() => this.onPress()}>
-             <Text style={styles.buttonText}>
-               COUNTER
-             </Text>
-         </TouchableOpacity>
-       </View>
-      </View>
-    </ScrollView>
+          </Image>
+          <View style={styles.container}>
+            {createCategories()}
+            <TouchableOpacity onPress={() => this.incrementXP(1)} style={styles.button}>
+              <Text style={styles.buttonText}>
+                Increment Completed
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.incrementLevel(1)} style={styles.button}>
+              <Text style={styles.buttonText}>
+                Increment Level
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.onPress()}>
+              <Text style={styles.buttonText}>
+                COUNTER
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
     )
   }
 }
@@ -112,7 +120,7 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 50,
+    marginBottom: 50
   },
   title: {
     fontSize: 20,
@@ -151,7 +159,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(233, 233, 233)',
     borderWidth: 1,
     borderColor: 'rgb(213, 213, 213)',
-    margin: 10,
+    margin: 10
   }
 })
 
