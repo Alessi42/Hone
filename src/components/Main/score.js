@@ -16,7 +16,13 @@ const Score = (props) => {
           Completed: {completed}
         </Text>
       </View>
-      <View style={[styles.bar, {width: width * (completed/(2+level*2))}]}>
+
+      <View style={styles.bar}>
+        <View style={{
+            height: 8,
+            backgroundColor: '#E1F5FE',
+            width: width * (completed/(2+level*2))}}>
+        </View>
       </View>
     </View>
   )
@@ -24,7 +30,7 @@ const Score = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: height*.8,
+    height: height*.75,
     justifyContent: 'space-between'
   },
   text: {

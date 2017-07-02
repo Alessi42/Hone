@@ -8,16 +8,15 @@ import {
   StyleSheet
 } from 'react-native'
 import {Actions} from 'react-native-router-flux'
-import { increment, doubleAsync } from '../modules/workoutReducer'
 
-class Workouts extends Component {
+class User extends Component {
   render() {
     return (
-      <View style={{paddingTop:65}}>
-        <Text>List {this.props.text} workouts</Text>
+      <View>
+        <Text>User</Text>
       </View>
       )
     }
   }
 
-export default Workouts
+export default User

@@ -11,6 +11,7 @@ import Dimensions from 'Dimensions';
 import {Actions} from 'react-native-router-flux'
 import Counter from '../../../components/Counter/counter'
 import Score from '../../../components/Main/score'
+import Category from '../../../components/Main/category'
 
 const {width,height} = Dimensions.get('window');
 
@@ -23,27 +24,41 @@ class Home extends Component {
       categories: [
         {
           key: 1,
-          title: 'Arms',
-          completed: 0.1,
-          component: 'Arms'
+          title: 'Cardio',
+          completed: 0.2,
+          component: 'Cardio'
         },
         {
           key: 2,
+          title: 'Arms',
+          completed: 0.6,
+          component: 'Arms'
+        },
+        {
+          key: 3,
           title: 'Abs',
           completed: 0.4,
           component: 'Abs'
         },
+        {
+          key: 4,
+          title: 'Legs',
+          completed: 0.7,
+          component: 'Legs'
+        },
       ]
     }
   }
-  onPress(screen) {
-    switch (screen) {
-      case 'workouts':
-        Actions.workouts();
-        break;
-      default:
-        Actions.counter();
-    }
+  onPress(category) {
+    Actions.workouts({text: category.title});
+    // console.log("pressed");
+    // switch (screen) {
+    //   case 'workouts':
+    //     Actions.workouts({text: 'Hello World!'});
+    //     break;
+    //   default:
+    //     Actions.counter();
+    // }
     //Actions.counter();
   }
   incrementXP(value) {
@@ -61,21 +76,17 @@ class Home extends Component {
   render() {
     const createCategories = () => {
       return this.state.categories.map((category) => {
-        return <TouchableOpacity key={category.key} style={styles.category} onPress={() => this.onPress('workouts')}>
-          <Text style={styles.categoryText}>{category.title}</Text>
-        </TouchableOpacity>
+        return <Category key={category.key} category={category} onPress={() => this.onPress(category)} />
       });
     }
     return (
-      <View style={{flex: 1}}>
-      <ScrollView alwaysBounceHorizontal={false} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{flex: 1}} bounces={false} showsVerticalScrollIndicator={false}>
       <View style={{flex: 1}}>
         <Image source={require('../assets/background.png')} style={styles.backgroundImage}>
             <Score completed={this.state.completed} level={this.state.level}/>
         </Image>
-        <View style={{marginTop:8}}>
+        <View style={styles.container}>
           {createCategories()}
-          <View style={{flexDirection: 'row', justifyContent: 'center'}}>
           <TouchableOpacity onPress={() => this.incrementXP(1)} style={styles.button}>
             <Text style={styles.buttonText}>
               Increment Completed
@@ -86,7 +97,6 @@ class Home extends Component {
               Increment Level
             </Text>
           </TouchableOpacity>
-          </View>
            <TouchableOpacity onPress={() => this.onPress()}>
              <Text style={styles.buttonText}>
                COUNTER
@@ -95,23 +105,6 @@ class Home extends Component {
        </View>
       </View>
     </ScrollView>
-      <View style={{
-          height:56,
-          backgroundColor: "#fff",
-          flexDirection:'row',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 16 },
-          shadowOpacity: 1,
-          shadowRadius: 8,
-          elevation: 5
-        }}>
-        <Text style={{color:"steelblue"}}>Home</Text>
-        <Text style={{color:"#ccc"}}>Progress</Text>
-        <Text style={{color:"#ccc"}}>Jacob</Text>
-      </View>
-      </View>
     )
   }
 }
@@ -119,8 +112,7 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    marginBottom: 50,
   },
   title: {
     fontSize: 20,
@@ -160,19 +152,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'rgb(213, 213, 213)',
     margin: 10,
-    width: 102
-  },
-  category: {
-    height: 78,
-    margin: 4,
-    marginTop: 0,
-    borderRadius: 2,
-    backgroundColor: '#fff8e1',
-    paddingLeft: 8,
-    justifyContent: 'center'
-  },
-  categoryText: {
-    fontSize: 30
   }
 })
 
