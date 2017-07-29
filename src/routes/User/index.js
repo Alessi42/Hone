@@ -2,6 +2,7 @@ import UserContainer from './containers/userContainer'
 
 export default {
   path: 'user',
-  title: 'User',
+  title: 'Profile',
+  iconName: "Profile",
   component: UserContainer
 }

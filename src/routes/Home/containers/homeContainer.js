@@ -19,29 +19,37 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      level: 1,
-      completed: 3,
       categories: [
         {
           key: 1,
-          title: 'CARDIO',
+          title: 'Warm-ups',
+          completed: 0.2,
+          component: 'WarmUps'
+        }, {
+          key: 2,
+          title: 'Cardio',
           completed: 0.2,
           component: 'Cardio'
         }, {
-          key: 2,
-          title: 'ARMS',
+          key: 3,
+          title: 'Legs',
+          completed: 0.2,
+          component: 'Legs'
+        },{
+          key: 4,
+          title: 'Arms',
           completed: 0.6,
           component: 'Arms'
         }, {
-          key: 3,
-          title: 'ABS',
+          key: 5,
+          title: 'Core',
           completed: 0.4,
-          component: 'Abs'
+          component: 'Core'
         }, {
-          key: 4,
-          title: 'LEGS',
+          key: 6,
+          title: 'Cool downs',
           completed: 0.7,
-          component: 'Legs'
+          component: 'CoolDowns'
         }
       ]
     }
@@ -49,8 +57,9 @@ class Home extends Component {
   onPress(category) {
     if (typeof category !== "undefined") {
       Actions.workouts({text: category.title});
+    } else {
+      Actions.progress();
     }
-    Actions.counter();
     // console.log("pressed");
     // switch (screen) {
     //   case 'workouts':
@@ -60,20 +69,6 @@ class Home extends Component {
     //     Actions.counter();
     // }
     //Actions.counter();
-  }
-  incrementXP(value) {
-    this.setState(previousState => {
-      return {
-        completed: previousState.completed + value
-      };
-    });
-  }
-  incrementLevel(value) {
-    this.setState(previousState => {
-      return {
-        level: previousState.level + value
-      };
-    });
   }
   // <Image source={require('../assets/background.png')} style={styles.backgroundImage}>
   // contentContainerStyle={styles.container}
@@ -120,7 +115,8 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 50
+    marginBottom: 50,
+    backgroundColor: '#616161',
   },
   title: {
     fontSize: 20,

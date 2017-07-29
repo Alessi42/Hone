@@ -9,15 +9,14 @@ import {
 } from 'react-native'
 import {Actions} from 'react-native-router-flux'
 
-class User extends Component {
+class Challenges extends Component {
   render() {
     return (
       <View>
-        
-        <Text>User</Text>
+        <Text>Challenges</Text>
       </View>
       )
     }
   }
 
-export default User
+export default Challenges

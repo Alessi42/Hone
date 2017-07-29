@@ -8,6 +8,7 @@ const Score = (props) => {
   const {level, completed} = props
   return (
     <View style={styles.container}>
+      {/*
       <View style={styles.score}>
         <Text style={styles.text}>
            Level: {level}
@@ -16,7 +17,8 @@ const Score = (props) => {
           Completed: {completed}
         </Text>
       </View>
-
+      */}
+      <View/>
       <View style={styles.bar}>
         <View style={{
             height: 8,
@@ -30,7 +32,7 @@ const Score = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: height*.75,
+    height: height*.4,
     justifyContent: 'space-between'
   },
   text: {
