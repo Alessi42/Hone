@@ -7,32 +7,12 @@ const {width,height} = Dimensions.get('window');
 const Score = (props) => {
   const {level, completed} = props
   return (
-    <View style={styles.container}>
-      {/*
-      <View style={styles.score}>
-        <Text style={styles.text}>
-           Level: {level}
-        </Text>
-        <Text style={styles.text}>
-          Completed: {completed}
-        </Text>
-      </View>
-      */}
-      <View/>
-      <View style={styles.bar}>
-        <View style={{
-            height: 8,
-            backgroundColor: '#E1F5FE',
-            width: width * (completed/(2+level*2))}}>
-        </View>
-      </View>
-    </View>
+    <View style={styles.container}></View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: height*.4,
     justifyContent: 'space-between'
   },
   text: {
@@ -42,7 +22,7 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   score: {
-    flex: 3,
+    flex: 1,
     paddingLeft: 16,
     justifyContent: 'center',
     // alignItems: 'center',

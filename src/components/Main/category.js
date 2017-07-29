@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, ScrollView, Text, TouchableOpacity, StyleSheet, Platform} from 'react-native'
+import {View, ScrollView, Text, TouchableOpacity, StyleSheet, Platform, Image} from 'react-native'
 import Dimensions from 'Dimensions';
 const {width,height} = Dimensions.get('window');
 
@@ -8,25 +8,38 @@ const Category = (props) => {
   const {category, scene} = props
   return (
     <TouchableOpacity style={styles.container} onPress={props.onPress}>
+      {category.icon ? <Image style={styles.image} source={category.icon} />:null}
       <Text style={styles.text}>{category.title}</Text>
+      <Image style={styles.image} source={require('../Icons/Chevron.png')} />
     </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: 56,
+    height: 50,
     margin: 1,
     marginTop: 0,
-    backgroundColor: '#424242',
+    backgroundColor: '#231f21',
     paddingLeft: 8,
     justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingRight: 16,
   },
   text: {
+    flex: 1,
+    paddingLeft: 8,
     fontFamily: (Platform.OS === 'ios') ? 'Arial': 'Roboto',
     fontWeight: '300',
     fontSize: 20,
     color: '#EEE',
+  },
+  image: {
+    height: 30,
+    width: 30,
+    tintColor: '#ecdca9',
   }
 })
 

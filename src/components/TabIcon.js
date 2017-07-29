@@ -32,8 +32,8 @@ const styles = {
     backgroundColor: '#302d2e',
   },
   icon: {
-    height:25,
-    width:25,
+    height:24,
+    width:24,
   }
 }
 TabIcon.propTypes = propTypes;

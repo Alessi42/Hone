@@ -6,16 +6,19 @@ import Router from './src/scenes/router';
 
 export default class App extends React.Component {
   render() {
-    StatusBar.setBarStyle('light-content', true)
     return (
       <Provider store={createStore()}>
         <View style={{
           flex: 1
         }}>
-          <View style={{height:25,backgroundColor:'#000'}}/>
-          <Router/>
+          <View style={{
+            height: 25,
+            backgroundColor: '#231f21'
+          }}/>
+
+        <Router/>
         </View>
       </Provider>
-    );
+    )
   }
 }

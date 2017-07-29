@@ -8,16 +8,20 @@ import {
   StyleSheet
 } from 'react-native'
 import {Actions} from 'react-native-router-flux'
-import { increment, doubleAsync } from '../modules/workoutReducer'
+import {increment, doubleAsync} from '../modules/workoutReducer'
 
 class Workouts extends Component {
   render() {
     return (
-      <View style={{paddingTop:65}}>
-        <Text>List {this.props.text} workouts</Text>
-      </View>
-      )
-    }
+      <ScrollView style={styles.container}>
+        <Text>List {this.props.title} workouts</Text>
+      </ScrollView>
+    )
   }
-
+}
+const styles = {
+  container: {
+    paddingTop: 64,
+  }
+}
 export default Workouts
