@@ -56,6 +56,8 @@ class Home extends Component {
     }
   }
   onPress(category) {
+    Actions.workouts({title: category.title.toUpperCase()})
+    console.log('stuff')
     if (typeof category !== "undefined") {
       Actions.workouts({title: category.title.toUpperCase()});
     } else {

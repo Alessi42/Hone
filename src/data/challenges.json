@@ -1,0 +1,53 @@
+{
+  "difficulty": [
+    [{
+        "id": 1,
+        "name": "Challenge I",
+        "thumbnail": "http://img.youtube.com/vi/q20pLhdoEoY/0.jpg",
+        "videoUrl": "https://joeswebserver.uk.to/wo1.mp3",
+        "exercises": [{
+            "name": "Tuck Jumps",
+            "amount": 20
+          },
+          {
+            "name": "X-Jumps",
+            "amount": 20
+          },
+          {
+            "name": "Power Jumps",
+            "amount": 20
+          },
+          {
+            "name": "Diamond Jumps",
+            "amount": 20
+          },
+        ],
+        "duration": 1338000
+      },
+      {
+        "id": 2,
+        "name": "Challenge II",
+        "thumbnail": "http://img.youtube.com/vi/TkaYafQ-XC4/0.jpg",
+        "videoUrl": "https://joeswebserver.uk.to/wo2.mp3",
+        "exercises": [{
+            "name": "Tuck Jumps",
+            "amount": 10
+          },
+          {
+            "name": "X-Jumps",
+            "amount": 10
+          },
+          {
+            "name": "Power Jumps",
+            "amount": 10
+          },
+          {
+            "name": "Diamond Jumps",
+            "amount": 10
+          },
+        ],
+        "duration": 1322000
+      }
+    ],
+  ]
+}
