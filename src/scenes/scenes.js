@@ -16,17 +16,9 @@ import Workouts from '../routes/Workouts'
 
 const createWorkouts = () => {
   return Routes.childRoutes.map((route) => {
-    return <Scene
-      key={route.path}
-      component={route.component}
-      title={route.title}
-      hideNavBar={false}
-      navigationBarStyle={styles.navBarStyle}
-      leftButtonIcon={Chevron}
-      leftButtonIconStyle = {{ tintColor: '#eddca9' }}
-      titleStyle = {styles.navTitleStyle}
-      sceneStyle={styles.sceneStyle}
-    />
+    return <Scene key={route.path} component={route.component} title={route.title} hideNavBar={false} navigationBarStyle={styles.navBarStyle} leftButtonIcon={Chevron} leftButtonIconStyle={{
+      tintColor: '#eddca9'
+    }} titleStyle={styles.navTitleStyle} sceneStyle={styles.sceneStyle}/>
   });
 }
 
@@ -53,22 +45,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#231f21'
   },
   navTitleStyle: {
-    color:'#fff',
+    color: '#fff',
     fontSize: 25,
-    fontWeight: '500',
+    fontWeight: '500'
   },
   sceneStyle: {
     backgroundColor: '#231f21', // '#fff'
-  },
+  }
 });
 
 const scenes = Actions.create(
   <Scene key="app" tabs tabBarStyle={styles.tabBarStyle} tabBarSelectedItemStyle={styles.tabBarSelectedItemStyle}>
-    <Scene key={Routes.indexRoute.path} initial={true} component={Routes.indexRoute.component} title={Routes.indexRoute.title} icon={TabIcon} iconName={Routes.indexRoute.iconName} sceneStyle={styles.sceneStyle} hideNavBar>
+    <Scene drawer={true} key={Routes.indexRoute.path} initial={true} component={Routes.indexRoute.component} title={Routes.indexRoute.title} icon={TabIcon} iconName={Routes.indexRoute.iconName} sceneStyle={styles.sceneStyle} hideNavBar>
       {createWorkouts()}
     </Scene>
-    <Scene key={Routes.challengesRoute.path} component={Routes.challengesRoute.component} title={Routes.challengesRoute.title} hideNavBar icon={TabIcon} iconName={Routes.challengesRoute.iconName} sceneStyle={styles.sceneStyle}></Scene>
-    <Scene key={Routes.userRoute.path} component={Routes.userRoute.component} title={Routes.userRoute.title} hideNavBar icon={TabIcon} iconName={Routes.userRoute.iconName} sceneStyle={styles.sceneStyle}></Scene>
+    <Scene drawer={true} key={Routes.challengesRoute.path} component={Routes.challengesRoute.component} title={Routes.challengesRoute.title} hideNavBar icon={TabIcon} iconName={Routes.challengesRoute.iconName} sceneStyle={styles.sceneStyle}></Scene>
+    <Scene drawer={true} key={Routes.userRoute.path} component={Routes.userRoute.component} title={Routes.userRoute.title} hideNavBar icon={TabIcon} iconName={Routes.userRoute.iconName} sceneStyle={styles.sceneStyle}></Scene>
   </Scene>
 )
 

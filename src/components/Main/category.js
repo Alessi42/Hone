@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingLeft: 16,
     paddingRight: 16,
   },
   text: {
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30,
     tintColor: '#ecdca9',
+    paddingRight: 8,
   }
 })
 

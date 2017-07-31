@@ -25,7 +25,7 @@ class Home extends Component {
           title: 'Warm-ups',
           completed: 0.2,
           component: 'WarmUps',
-          icon: require('../assets/heart.png')
+          icon: require('../../../components/Icons/Heart.png')
         }, {
           key: 2,
           title: 'Cardio',
@@ -56,22 +56,13 @@ class Home extends Component {
     }
   }
   onPress(category) {
-    Actions.workouts({title: category.title.toUpperCase()})
-    console.log('stuff')
-    if (typeof category !== "undefined") {
-      Actions.workouts({title: category.title.toUpperCase()});
-    } else {
-      Actions.progress();
-    }
-    // console.log("pressed");
-    // switch (screen) {
-    //   case 'workouts':
-    //     Actions.workouts({text: 'Hello World!'});
-    //     break;
-    //   default:
-    //     Actions.counter();
+    console.log(Actions)
+    Actions.workouts()
+    // if (typeof category !== "undefined") {
+    //   Actions.workouts({title: category.title.toUpperCase()});
+    // } else {
+    //   Actions.progress();
     // }
-    //Actions.counter();
   }
   // <Image source={require('../assets/background.png')} style={styles.backgroundImage}>
   // contentContainerStyle={styles.container}
@@ -82,7 +73,7 @@ class Home extends Component {
       });
     }
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.logoContainer}>
           <Image style={styles.logo} source={require('../assets/TextLogo.png')} />
         </View>
@@ -90,7 +81,7 @@ class Home extends Component {
 
         </View>
         {createCategories()}
-      </View>
+      </ScrollView>
     )
   }
 }
