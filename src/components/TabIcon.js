@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-console.log(Icon);
+//console.log(Icon);
 var icons = {
   Workouts: require("../components/Icons/Workouts_s.png"),
   Challenges: require("../components/Icons/Challenges_s.png"),

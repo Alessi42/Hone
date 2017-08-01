@@ -10,21 +10,31 @@ import {
 import {Actions} from 'react-native-router-flux'
 import StarRating from '../../../components/Main/StarRating'
 import ChallengeItem from '../../../components/Main/challengeItem'
+
+import moment from "moment";
+
 import challengesData from '../../../data/challenges.json'
 
 class Challenges extends Component {
+  constructor(props) {
+    super(props);
+    this.state
+  }
+
+  onPress(challenge) {
+    // console.log(challenge)
+    Actions.challengeScreen({'title': challenge.name, 'challenge': challenge})
+  }
   render() {
     var challengesList = []
     challengesData.difficulty[0].forEach(challenge => {
-      challengesList.push(
-        <ChallengeItem key={challenge.id} id={challenge.id} name={challenge.name} thumbnail={challenge.thumbnail} />
-      )
+      challengesList.push(<ChallengeItem key={challenge.id} id={challenge.id} name={challenge.name} thumbnail={challenge.thumbnail} onPress={() => this.onPress(challenge)}/>)
     });
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Difficulty</Text>
         <StarRating rating={3}/>
-        { challengesList }
+        {challengesList}
       </View>
     )
   }

@@ -3,9 +3,9 @@ import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native'
 
 const challengeItem = (props) => {
   const {id, name, record, thumbnail} = props
-  console.log("working", id, name, record, thumbnail)
+  //console.log("working", id, name, record, thumbnail)
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={props.onPress}>
       <Image
           style={{height: 56, width: 100, resizeMode: 'cover'}}
           source={thumbnail? {uri: thumbnail} : require("../Icons/Thumbnail.png")}
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   nameText: {
+    textAlign: 'center',
     fontSize: 22,
     color: '#fff'
   },

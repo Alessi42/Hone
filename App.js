@@ -15,10 +15,9 @@ export default class App extends React.Component {
             height: 25,
             backgroundColor: '#231f21'
           }}/>
-
         <Router/>
         </View>
       </Provider>
-    )
+    );
   }
 }

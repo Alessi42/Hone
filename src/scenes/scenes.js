@@ -7,7 +7,8 @@ import {
   Switch,
   Modal,
   Actions,
-  ActionConst
+  ActionConst,
+  Schema
 } from 'react-native-router-flux';
 import TabIcon from '../components/TabIcon';
 import Routes from '../routes/index'
@@ -50,17 +51,40 @@ const styles = StyleSheet.create({
     fontWeight: '500'
   },
   sceneStyle: {
-    backgroundColor: '#231f21', // '#fff'
+    backgroundColor: '#231f21'
   }
 });
-
+// direction="leftToRight" stops white transition flash
 const scenes = Actions.create(
   <Scene key="app" tabs tabBarStyle={styles.tabBarStyle} tabBarSelectedItemStyle={styles.tabBarSelectedItemStyle}>
-    <Scene drawer={true} key={Routes.indexRoute.path} initial={true} component={Routes.indexRoute.component} title={Routes.indexRoute.title} icon={TabIcon} iconName={Routes.indexRoute.iconName} sceneStyle={styles.sceneStyle} hideNavBar>
-      {createWorkouts()}
+  <Scene key="main" title={Routes.indexRoute.title} icon={TabIcon} iconName={Routes.indexRoute.iconName}>
+      <Scene key={Routes.indexRoute.path} component={Routes.indexRoute.component} title={Routes.indexRoute.title} sceneStyle={styles.sceneStyle} direction="leftToRight" hideNavBar/>
+      { createWorkouts() }
     </Scene>
-    <Scene drawer={true} key={Routes.challengesRoute.path} component={Routes.challengesRoute.component} title={Routes.challengesRoute.title} hideNavBar icon={TabIcon} iconName={Routes.challengesRoute.iconName} sceneStyle={styles.sceneStyle}></Scene>
-    <Scene drawer={true} key={Routes.userRoute.path} component={Routes.userRoute.component} title={Routes.userRoute.title} hideNavBar icon={TabIcon} iconName={Routes.userRoute.iconName} sceneStyle={styles.sceneStyle}></Scene>
+    <Scene defaultRoute key="challenges" title={Routes.challengesRoute.title} icon={TabIcon} iconName={Routes.challengesRoute.iconName}>
+      <Scene
+        key={Routes.challengesRoute.title}
+        title={Routes.challengesRoute.title}
+        component={Routes.challengesRoute.component}
+        sceneStyle={styles.sceneStyle}
+        direction="leftToRight"
+        hideNavBar>
+      </Scene>
+      <Scene
+        key={Routes.challengeScreenRoute.path}
+        component={Routes.challengeScreenRoute.component}
+        title={Routes.challengeScreenRoute.title}
+        hideNavBar={false}
+        hideTabBar
+        navigationBarStyle={styles.navBarStyle}
+        leftButtonIcon={Chevron}
+        leftButtonIconStyle={{tintColor: '#eddca9'}}
+        titleStyle={styles.navTitleStyle}
+        sceneStyle={styles.sceneStyle}
+        >
+      </Scene>
+    </Scene>
+    <Scene defaultRoute key={Routes.userRoute.path} component={Routes.userRoute.component} title={Routes.userRoute.title} hideNavBar icon={TabIcon} iconName={Routes.userRoute.iconName} sceneStyle={styles.sceneStyle}></Scene>
   </Scene>
 )
 

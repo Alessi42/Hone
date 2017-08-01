@@ -25,44 +25,47 @@ class Home extends Component {
           title: 'Warm-ups',
           completed: 0.2,
           component: 'WarmUps',
-          icon: require('../../../components/Icons/Heart.png')
+          icon: require('../../../components/Icons/WarmUps.png')
         }, {
           key: 2,
           title: 'Cardio',
           completed: 0.2,
-          component: 'Cardio'
+          component: 'Cardio',
+          icon: require('../../../components/Icons/Heart.png')
         }, {
           key: 3,
           title: 'Legs',
           completed: 0.2,
-          component: 'Legs'
+          component: 'Legs',
+          icon: require('../../../components/Icons/Legs.png')
         }, {
           key: 4,
           title: 'Arms',
           completed: 0.6,
-          component: 'Arms'
+          component: 'Arms',
+          icon: require('../../../components/Icons/Arms.png')
         }, {
           key: 5,
           title: 'Core',
           completed: 0.4,
-          component: 'Core'
+          component: 'Core',
+          icon: require('../../../components/Icons/Core.png')
         }, {
           key: 6,
           title: 'Cool downs',
           completed: 0.7,
-          component: 'CoolDowns'
+          component: 'CoolDowns',
+          icon: require('../../../components/Icons/CoolDowns.png')
         }
       ]
     }
   }
   onPress(category) {
-    console.log(Actions)
-    Actions.workouts()
-    // if (typeof category !== "undefined") {
-    //   Actions.workouts({title: category.title.toUpperCase()});
-    // } else {
-    //   Actions.progress();
-    // }
+    if (typeof category !== "undefined") {
+      Actions.workouts({title: category.title.toUpperCase()});
+    } else {
+      Actions.progress();
+    }
   }
   // <Image source={require('../assets/background.png')} style={styles.backgroundImage}>
   // contentContainerStyle={styles.container}
